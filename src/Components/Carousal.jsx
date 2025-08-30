@@ -95,7 +95,14 @@ const IconCarousel = ({data}) => {
       
         {
            data.map((item)=>{
-            return <Link to={`/items/${item.action.text}`}>
+            let str = item.action.text;
+            if(str.includes(" ")){
+                let arr = str.split(" ")
+                str = arr.join("")
+            }
+            if(str.includes("Cakes")) return;
+            if(str.includes("Kababs")) return;
+            return <Link to={`/items/${str}`}>
                 <img src={homeUrl + item.imageId}></img>
             </Link>
            })

@@ -17,7 +17,7 @@ const Home = () => {
              // console.log(json)
               setRecommendation(json.data.cards[0].card.card.imageGridCards.info)
               setRestaurants(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants)
-             // console.log(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants)
+              console.log(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants)
               //console.log(json.data.cards[0].card.card.imageGridCards.info)
              // setTop(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants)
           }
@@ -38,9 +38,15 @@ const Home = () => {
 }
    
           </div>
+          
           <div className='grid grid-cols-4 '>
               {restaurants && restaurants.map((item)=>{
-                return( <Restaurant img={item.info.cloudinaryImageId} name={item.info.name} key={item.info.id}/>)
+                return( <Restaurant img={item.info.cloudinaryImageId}
+                   name={item.info.name}
+                    key={item.info.id}
+                    locality={item.info.locality}
+                    resId={item.info.id}
+                     />)
               })}
           </div>
           </div>

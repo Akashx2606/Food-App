@@ -3,6 +3,7 @@ import Navbar from './Components/Navbar'
 import Home from './Components/Home'
 import { Route, Routes } from 'react-router-dom'
 import Showitems from './Components/Showitems'
+import { Menu } from 'lucide-react'
 
 const App = () => {
   
@@ -14,6 +15,7 @@ const App = () => {
         <Route path="/" element={<Home/>}/>
         
         <Route path="/items/:query" element={<Showitems/>}/>
+        <Route path='/menu/:resId' element={<Menu/>}/>
        </Routes>
     </div>
   )
