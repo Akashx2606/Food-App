@@ -1,21 +1,29 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { Menu_api } from '../constants'
+import SubMenu from './SubMenu'
 
 const Menu = () => {
    const{resId} = useParams()
-   const[menu ,setMenu] = useState([])
+   const[menuData ,setMenuData] = useState([])
 
    useEffect(()=>{
     const getData = async() => {
         const data = await fetch(Menu_api +  resId)
-        const json = data.json()
-        console.log(json)
+        const json = await data.json()
+       // console.log(json)
+        setMenuData(json.data.cards[4].groupedCard.cardGroupMap.REGULAR.cards.slice(2,-2))
+        console.log(json.data.cards[4].groupedCard.cardGroupMap.REGULAR.cards.slice(2,-2))
 
     }
-   })
+    getData()
+   },[])
   return (
-    <div>Menu</div>
+    <div>
+      {menuData && menuData.map((item)=>{
+        return <SubMenu obj={item}/>
+      })}
+    </div>
   )
 }
 

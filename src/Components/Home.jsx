@@ -1,5 +1,5 @@
 import React,{useEffect, useState} from 'react'
-import { homeUrl, swigyApi, resta_url } from '../constants'
+import {  swigyApi, } from '../constants'
 import { Link } from 'react-router-dom'
 import Restaurant from './Restaurant'
 import Carousal from './Carousal'
@@ -17,7 +17,7 @@ const Home = () => {
              // console.log(json)
               setRecommendation(json.data.cards[0].card.card.imageGridCards.info)
               setRestaurants(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants)
-              console.log(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants)
+            //  console.log(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants)
               //console.log(json.data.cards[0].card.card.imageGridCards.info)
              // setTop(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants)
           }

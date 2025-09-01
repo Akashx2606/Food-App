@@ -3,7 +3,7 @@ import Navbar from './Components/Navbar'
 import Home from './Components/Home'
 import { Route, Routes } from 'react-router-dom'
 import Showitems from './Components/Showitems'
-import { Menu } from 'lucide-react'
+import  Menu  from './Components/Menu'
 
 const App = () => {
   

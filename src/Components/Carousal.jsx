@@ -2,7 +2,7 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { homeUrl } from "../constants";
+import { cloudinary_url } from "../constants";
 import { Link } from "react-router-dom";
 
 
@@ -103,7 +103,7 @@ const IconCarousel = ({data}) => {
             if(str.includes("Cakes")) return;
             if(str.includes("Kababs")) return;
             return <Link to={`/items/${str}`}>
-                <img src={homeUrl + item.imageId}></img>
+                <img src={cloudinary_url + item.imageId}></img>
             </Link>
            })
         }

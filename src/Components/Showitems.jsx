@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { dishesUrl1, dishesUrl2 } from '../constants'
 import { useParams } from 'react-router-dom'
-import { dishescloud } from '../constants'
+import { cloudinary_url } from '../constants'
 
 
 const Showitems = () => {
@@ -15,7 +15,7 @@ const Showitems = () => {
        setShow(json)
       // console.log(json)
        setShow(json.data.cards[1].groupedCard.cardGroupMap.DISH.cards.slice(1))
-      console.log(json.data.cards[1].groupedCard.cardGroupMap.DISH.cards.slice(1))
+      //console.log(json.data.cards[1].groupedCard.cardGroupMap.DISH.cards.slice(1))
       
       
     }
@@ -27,7 +27,7 @@ const Showitems = () => {
        {show && show.map((item)=>{
         const imgid = item.card.card.info.imageId
        return ( <div>
-        <img src={imgid ? dishescloud+imgid : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoCPhfvD2LD1EPzr-7xzpuSjlhJZQU-iMU8w&s"}/>
+        <img src={imgid ? cloudinary_url+imgid : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoCPhfvD2LD1EPzr-7xzpuSjlhJZQU-iMU8w&s"}/>
         {item.card.card.info.name }
         </div>)
 
