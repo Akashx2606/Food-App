@@ -13,13 +13,13 @@ const Menu = () => {
         const json = await data.json()
        // console.log(json)
         setMenuData(json.data.cards[4].groupedCard.cardGroupMap.REGULAR.cards.slice(2,-2))
-        console.log(json.data.cards[4].groupedCard.cardGroupMap.REGULAR.cards.slice(2,-2))
+       // console.log(json.data.cards[4].groupedCard.cardGroupMap.REGULAR.cards.slice(2,-2))
 
     }
     getData()
    },[])
   return (
-    <div>
+    <div >
       {menuData && menuData.map((item)=>{
         return <SubMenu obj={item}/>
       })}
