@@ -14,7 +14,7 @@ const SubMenu = ({ obj }) => {
            setShowitems(!showitems)
       }}>
       <h2 className="text-2xl font-bold mb-4">{title}</h2>
-       {showitems ? <span>⬆️</span>:<span>⬇️</span>}
+       {showitems ? <span className='cursor-pointer'>⬆️</span>:<span className='cursor-pointer'>⬇️</span>}
      </div>
       {/* Items */}
       <div className="space-y-4">
