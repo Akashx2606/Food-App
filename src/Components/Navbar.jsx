@@ -1,7 +1,17 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { Link, useNavigate } from 'react-router-dom'
+
+
+
 
 const Navbar = () => {
+  const navigate = useNavigate()
+  const cartData = useSelector((Store)=> Store.cart)
+  let ans = 0;
+  for(let item of cartData){
+    ans += item.quantity
+  }
   return (
     <div className="flex items-center justify-between px-6 py-4 bg-gradient-to-r from-red-500 to-yellow-400 shadow-md">
       {/* Logo */}
@@ -46,6 +56,14 @@ const Navbar = () => {
         >
           Order
         </Link>
+        <div className="relative">
+        <Link to='/cart' className='text-white hover:text-orange-200 transition duration-300 flex items-center'>
+          <span className="text-2xl">🛒</span>
+          <div className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 bg-red-600 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+             {ans}
+          </div>
+        </Link>
+      </div> 
       </div>
     </div>
   )

@@ -1,19 +1,22 @@
 import React, { useState } from 'react'
 import { cloudinary_url } from "../constants"
+import { useDispatch } from 'react-redux'
+import {addItem} from "../Redux/CartSlice";
 
 const SubMenu = ({ obj }) => {
   const {title,itemCards} = obj.card.card
  // const arr = obj.card.card.itemCards;
   const[showitems,setShowitems] = useState(false)
+  const dispatch = useDispatch()
 
 
   return (
-    <div className="p-6 bg-red-100  rounded-lg w-6/12 mt-2 mx-auto ">
+    <div className="p-6 bg-red-100  rounded-lg w-6/12 mt-2 mx-auto" >
       {/* Title */}
       <div className='flex justify-between items-center' onClick={()=>{
            setShowitems(!showitems)
-      }}>
-      <h2 className="text-2xl font-bold mb-4">{title}</h2>
+      }} >
+      <h2 className="text-2xl font-bold mb-4" >{title}</h2>
        {showitems ? <span className='cursor-pointer'>⬆️</span>:<span className='cursor-pointer'>⬇️</span>}
      </div>
       {/* Items */}
@@ -42,6 +45,21 @@ const SubMenu = ({ obj }) => {
                   ₹{(price / 100).toFixed(2)}
                 </p>
               </div>
+            <button onClick={()=>{
+              dispatch(addItem({...showData,quantity : 1}))
+            }}
+            className="inline-flex items-center justify-center  
+            bg-emerald-600 px-4 py-2 text-white font-medium 
+            shadow hover:bg-emerald-700 active:bg-emerald-800 
+            focus:outline-none focus-visible:ring-2 
+            focus-visible:ring-emerald-500 
+            focus-visible:ring-offset-2 rounded-tl-[0.9rem] 
+            rounded-bl-[0.9rem]"
+               aria-label="Increase">+</button>
+
+              <button className="inline-flex items-center justify-center  bg-rose-600 px-4 py-2 text-white font-medium shadow hover:bg-rose-700 active:bg-rose-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 focus-visible:ring-offset-2 rounded-tr-[0.9rem] rounded-br-[0.9rem]"
+                aria-label="Decrease">–</button>
+
             </div>
           )
         })}
