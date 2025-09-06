@@ -50,10 +50,13 @@ import React, { useEffect, useState } from "react";
 import { dishesUrl1, dishesUrl2 } from "../constants";
 import { useParams } from "react-router-dom";
 import { cloudinary_url } from "../constants";
+import { addItem } from "../Redux/CartSlice";
+import { useDispatch } from "react-redux";
 
 const Showitems = () => {
   const [show, setShow] = useState([]);
   const { query } = useParams();
+  const dispatch = useDispatch()
 
   useEffect(() => {
     async function getData() {
@@ -99,7 +102,9 @@ const Showitems = () => {
                     ₹{(item.card.card.info.price/100).toFixed(2) || "149"}
                   </p>
                   <div className="mt-4">
-                      <button
+                      <button onClick={()=>{
+                        dispatch(addItem({...item.card.info,quantity : 1}))
+                      }} 
                         className="w-full rounded-xl bg-emerald-600 px-3 py-2 text-sm font-medium text-white
                                    shadow-sm transition hover:bg-emerald-700 active:bg-emerald-800
                                    focus:outline-none focus:ring-4 focus:ring-emerald-100"

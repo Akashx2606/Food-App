@@ -50,10 +50,13 @@
 
 import React, { useState } from 'react'
 import { cloudinary_url, dishesUrl1, dishesUrl2 } from '../constants';
+import { addItem } from '../Redux/CartSlice';
+import { useDispatch } from 'react-redux';
 
 const Search = () => {
   const [query, setQuery] = useState("");
   const [display, setDisplay] = useState([]);
+  const dispatch = useDispatch()
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -83,7 +86,7 @@ const Search = () => {
                 const data = await fetch(dishesUrl1 + query + dishesUrl2);
                 const json = await data.json();
                 setDisplay(json.data.cards[1].groupedCard.cardGroupMap.DISH.cards.slice(1));
-               // console.log(json.data.cards[1].groupedCard.cardGroupMap.DISH.cards.slice(1));
+                console.log(json.data.cards[1].groupedCard.cardGroupMap.DISH.cards.slice(1));
               };
               getData();
             }}
@@ -132,7 +135,10 @@ const Search = () => {
                     </div>
 
                     <div className="mt-4">
-                      <button
+                      <button 
+                       onClick={()=>{
+                             dispatch(addItem({...item.card.info,quantity : 1}))
+                            }}
                         className="w-full rounded-xl bg-emerald-600 px-3 py-2 text-sm font-medium text-white
                shadow-sm transition hover:bg-emerald-700 active:bg-emerald-800
                focus:outline-none focus:ring-4 focus:ring-emerald-100"
