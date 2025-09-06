@@ -12,6 +12,7 @@ const Navbar = () => {
   for(let item of cartData){
     ans += item.quantity
   }
+  
   return (
     <div className="flex items-center justify-between px-6 py-4 bg-gradient-to-r from-red-500 to-yellow-400 shadow-md">
       {/* Logo */}
@@ -23,9 +24,11 @@ const Navbar = () => {
         />
         <span className="text-white text-xl font-bold font-serif">Fresh Food</span>
       </div>
+         
 
       {/* Navigation Links */}
-      <div className="flex gap-6">
+      <div className="flex gap-6 items-center">
+
         <Link
           to="/"
           className="text-white hover:text-yellow-100 font-medium transition-colors duration-300"
@@ -56,6 +59,13 @@ const Navbar = () => {
         >
           Order
         </Link>
+        <Link
+          to="/search"
+          className="text-white hover:text-yellow-100 font-medium transition-colors duration-300"
+        >
+          🔍Search
+        </Link>
+
         <div className="relative">
         <Link to='/cart' className='text-white hover:text-orange-200 transition duration-300 flex items-center'>
           <span className="text-2xl">🛒</span>

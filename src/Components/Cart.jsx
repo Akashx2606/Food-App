@@ -50,19 +50,21 @@ const Cart = () => {
                     alt={name}
                     className="w-20 h-20 rounded object-cover border"
                   />
-                  <div>
-                    <h2 className="font-semibold text-lg">{name}</h2>
-                    <p className="text-sm text-gray-600">
+                  <div className="ml-4 flex flex-col">
+
+                    <h2 className="text-lg font-semibold">{name}</h2>
+                    <p className="text-gray-600 text-sm line-clamp-2">
                       {description || "Tasty food item"}
                     </p>
                     <p className="text-sm text-gray-700">
                       Quantity: <span className="font-medium">{quantity}</span>
                     </p>
+                    <p className="text-green-600 font-bold mt-1">
+                  ₹{(price / 100).toFixed(2)}
+                </p>
                   </div>
                 </div>
 
-                {/* Right side - price */}
-                <p className="text-green-600 font-bold text-lg">₹{price}</p>
               </div>
             );
           })
